@@ -50,9 +50,44 @@ while True:
         break        #break 终止循环
 
 #方法2
-# count =1
+count =1
 while count < 101:
     if count % 2 == 0:
         print(count)
     count = count + 1
 
+continue 退出本次循环
+while True:
+    print(110)
+    print(112)
+    continue  #遇到continue 等于遇到while底部
+    print(119)
+
+
+#while else  组合 记住用法：
+#while循环被break打断 就不执行else
+count = 1
+while count < 4:
+    print(count)
+    if count == 2:
+        break
+    count = count + 1
+else:
+    print("mdzz")
+
+
+#实例：
+count = 1
+while count <= 3:
+    username = input("input fucking name:")
+    password = input("input fucking password:")
+    code = 'Mdzz'
+    md_code  = input("input fucking code:")
+    if md_code == code:
+        if username == 'sb' and password == 'zz':
+            print("loading success!")
+        else:
+            print('username or password Error!')
+    else:
+        print("fucking code Error!")
+    count = count + 1
