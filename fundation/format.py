@@ -28,3 +28,9 @@ color: %s
 version: %s
 ---------------------------start at this--------------""" % (name,color,version)
 print(message)
+
+
+
+# 在格式化输出中 如需要让% 表示它本身的意思
+msg = ' 文件%s,当前下载2%%' %(name2)
+print(msg)
