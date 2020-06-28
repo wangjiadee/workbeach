@@ -33,3 +33,22 @@ print(1 < 3 and 3 < 4 or 1>2)
 # in 和 not in
 print('123' in '123333333333')
 print('abc' not in '123333333333')
+
+
+# 数字和字符串之间的转换
+i1 = 100
+print(str(i1)),type(str(i1))
+
+
+# 数字和布尔值之间的转化：
+# 非0即True 0 就是false
+sb = 100
+print(bool(sb))
+#负数 小数 浮点类型的都是T
+sd =  -1
+print(bool(sd))
+
+mdzz = 0
+print(bool(mdzz))
+
+print(1 > 2 and 3 or 4 and 4 < 5)
