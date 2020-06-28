@@ -52,3 +52,6 @@ mdzz = 0
 print(bool(mdzz))
 
 print(1 > 2 and 3 or 4 and 4 < 5)
+print(8 or 3 and 4 or 2 and 0 or 9 and 7)
+print( 2 > 2 or 3 < 4 or 4 > 5 and 2 > 1 and 9 > 8 or 7 < 6)
+
