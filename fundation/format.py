@@ -34,3 +34,19 @@ print(message)
 # 在格式化输出中 如需要让% 表示它本身的意思
 msg = ' 文件%s,当前下载2%%' %(name2)
 print(msg)
+
+
+# 密码库
+a = 0
+b = 2
+while a<3:
+    username = input("please input u fucking name:")
+    password = input("please input u fucking password:")
+    if username == 'mdzz' and password == 'sb':
+        print('what fucking lucky!')
+        break
+    else:
+        print(" fucking Error:%s"%(b))
+    b -= 1
+    a += 1
+print("FUCKING Bye!")
