@@ -91,4 +91,10 @@ for i in e:
     print("fucking time %ss"%(i))
 print("go go go!")
 
-
+# 计算用户输入的内容中有几个整数（以个位数为单位）
+cal = input("please input fucking things:")
+count = 0
+for i in cal:
+    if i.isdigit() == True:
+        count += 1
+print(count)
