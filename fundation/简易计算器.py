@@ -6,6 +6,3 @@ for i in s1:
     sum += int(i.strip())
 print(sum)
 
-
-
-

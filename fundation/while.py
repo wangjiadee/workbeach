@@ -162,3 +162,43 @@ while sb < 99:
     elif sb % 2 != 0:
         sum += sb
 print(sum)
+
+
+# 计算 1 - 2 + 3 ... + 99 中除了88以外所有数的总和
+sum = 0
+sb = 0
+while sb < 99:
+    sb += 1
+    if sb ==88:
+        continue
+    elif sb % 2 == 0:
+        sum -= sb
+    else:
+        sum += sb
+print(sum)
+
+# if 和while 的结合练习
+while True:
+    changes = input("please input fucking go home methods:")
+    if changes.upper() == 'A':
+        changes2 = input("bus or walk?")
+        if changes2 == 'bus':
+            print("used 10min!")
+            break
+        elif changes2 == 'walk':
+            print("used 20min!")
+            break
+    if changes.upper() == 'B':
+        print("fly!")
+        break
+    if changes.upper() == 'C':
+        print("playing")
+        changes3 = input("play grils or boys:")
+        if changes3 == 'grils':
+            print("called 911")
+            continue
+        elif changes3 == 'boys':
+            print("good hobby!")
+            continue
+
+
