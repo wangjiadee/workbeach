@@ -214,3 +214,11 @@ while True:
     else:
         print("number? ok? mdzz!")
 
+
+
+
+# 覆盖式循环  最后结果是users 9
+v = {}
+for index in range(10):
+    v['users'] = index
+print(v)
