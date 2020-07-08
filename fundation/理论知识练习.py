@@ -128,9 +128,30 @@ print(data)
 #  输出的是9个09
 #[{'user': 9}, {'user': 9}, {'user': 9}, {'user': 9}, {'user': 9}, {'user': 9}, {'user': 9}, {'user': 9}, {'user': 9}, {'user': 9}]
 data_list = []
-data = {}
+data = {}  #如果字典在外面 在循环之前就已经创建了
 for i in range(10):
     data['user'] = i
+    """
+    第一次 : data= {"user":0}
+    data_list = [{"user":0} ]
+    第一次 : data= {"user":1}
+    data_list = [{"user":0},{"user":1} ]
+    """
+    data_list.append(data)   #每次都指向同一个data data改变就全部改变
+print(data_list)
+
+
+
+data_list = []
+for i in range(10):
+    data = {}   #如果放在里面 每一次循环都创建了一个新的data 字典
+    data['user'] = i
+    """
+    第一次 : data= {"user":0}
+    data_list = [{"user":0} ]
+    第一次 : data= {"user":1}
+    data_list = [{"user":0},{"user":1} ]
+    """
     data_list.append(data)
 print(data_list)
 
