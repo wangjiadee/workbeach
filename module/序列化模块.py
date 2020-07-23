@@ -1,7 +1,7 @@
 '''
 @Author: Ralph
 @Date: 2020-07-23 12:22:12
-@LastEditTime: 2020-07-23 13:09:30
+@LastEditTime: 2020-07-23 13:15:44
 @FilePath: \python\module\序列化模块.py
 @Effect: python 序列化模块
 '''
@@ -27,16 +27,16 @@ print(st,type(st))
 dic1 = json.loads(st)
 print(dic1,type(dic1))
 
-# l1 = [1,2,3,4,5,{"name":"ralph"}]
-# with open('json文件',encoding="utf-8",mode='w') as f:
-#     st = json.dumps(l1)
-#     f.write(st)
+l1 = [1,2,3,4,5,{"name":"ralph"}]
+with open('json文件',encoding="utf-8",mode='w') as f:
+    st = json.dumps(l1)
+    f.write(st)
 
 
-# with open('json文件','r',encoding='utf-8') as f1:
-#     st = f1.read()
-#     l1 = json.loads(st)
-#     print(l1,type(l1))
+with open('json文件','r',encoding='utf-8') as f1:
+    st = f1.read()
+    l1 = json.loads(st)
+    print(l1,type(l1))
 
 
 
@@ -45,14 +45,14 @@ print(dic1,type(dic1))
 # dump load 不能一次写多个数据
 
 l1 = [1,2,3,{"name":"ralph"}]
-# with open('json文件','w',encoding='utf-8') as f2:
-#     json.dump(l1,f2)   #一次dump一个数据  省略了write的步骤
+with open('json文件','w',encoding='utf-8') as f2:
+    json.dump(l1,f2)   #一次dump一个数据  省略了write的步骤
 
 
 # 数据读取
-# with open('json文件','r',encoding='utf-8') as f3:
-#     l1 = json.load(f3)
-#     print(l1,type(l1))
+with open('json文件','r',encoding='utf-8') as f3:
+    l1 = json.load(f3)
+    print(l1,type(l1))
 
 
 
@@ -64,12 +64,13 @@ l3 = [1,2,3,2,5]
 l4 = [1,2,2,4,5]
 
 # 写入
-# with open('json文件',encoding="utf-8",mode='w') as f4:
-#     f4.write(json.dumps(l2) + '\n')
-#     f4.write(json.dumps(l3) + '\n')
-#     f4.write(json.dumps(l4) + '\n')
+with open('json文件',encoding="utf-8",mode='w') as f4:
+    f4.write(json.dumps(l2) + '\n')
+    f4.write(json.dumps(l3) + '\n')
+    f4.write(json.dumps(l4) + '\n')
 
 #读取
-# with open('json文件',encoding="utf-8",mode='r') as f4:
-#     for i in f4:
-#         print(json.loads(i))
+with open('json文件',encoding="utf-8",mode='r') as f4:
+    for i in f4:
+        print(json.loads(i))
+# ************************************************************************************************
