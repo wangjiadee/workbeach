@@ -2,7 +2,7 @@
 @Author: Ralph
 @Type_file: Python
 @Date: 2020-07-25 17:27:49
-@LastEditTime: 2020-07-25 17:54:21
+@LastEditTime: 2020-07-25 19:42:05
 @FilePath: \workbeach\Object\Object_class.py
 @Effect: 面向对象的类
 '''
@@ -11,6 +11,9 @@
 
 # 必须叫__init__这个名字,不能改变的,
 # 所有的在一个具体的人物出现之后拥有的属性
+
+
+from math import pi as PI
 
 
 class Person:
@@ -106,18 +109,25 @@ print(d, id(d))  # 1356845745928
 
 # =====================================================================
 # 定义一个圆形类,半径是这个圆形的属性,实例化一个半径为5的圆形,一个半径为10的圆形
-class Yuan():
-    def __init__(self, R):
-        self.mianji = R * R * 3.14
-        self.zhouchang = 2*R*3.14
 
 
-y1 = Yuan(5)
-y2 = Yuan(10)
-print(y1.mianji)
-print(y2.mianji)
-print(y1.__dict__)
-print(y2.__dict__)
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def get_area(self):
+        return PI * (self.radius**2)
+
+    def get_perimeter(self):
+        return 2 * PI * self.radius
+
+
+circle_1 = Circle(5)
+circle_2 = Circle(10)
+print(circle_1.get_area())  # 78.53981633974483
+print(circle_2.get_area())  # 314.1592653589793
+print(circle_1.get_perimeter())  # 31.41592653589793
+print(circle_2.get_perimeter())  # 62.83185307179586
 
 # 定义一个用户类,用户名和密码是这个类的属性,实例化两个用户,分别有不同的用户名和密码
 
@@ -127,8 +137,15 @@ class User:
         self.username = username
         self.password = password
 
+    def change_password(self, old_password, new_password):
+        if self.password != old_password:
+            return False
+        else:
+            self.password = new_password
+        return True
 
-ralph = User('ralph', 123123)
-xj = User('xiejier', 321321)
-print(ralph.__dict__)
-print(xj.__dict__)
+
+alex = User('alex', 123)
+taibai = User('taibai', 456)
+alex.change_password(123, 12345678)
+print(alex.__dict__)  # {'username': 'alex', 'password': 12345678}
