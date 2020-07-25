@@ -1,10 +1,10 @@
 '''
 @Author: ralph
 @Date: 2020-07-24 14:34:21
-@LastEditTime: 2020-07-24 14:39:06
+@LastEditTime: 2020-07-25 13:51:44
 @LastEditors: Please set LastEditors
 @Description: In User Settings Edit
-@FilePath: \python\workbeach\module\logger_module.py
+@FilePath: \workbeach\module\logger_module.py
 '''
 
 """
@@ -12,18 +12,27 @@ logging配置
 """
 
 
-import logging  
-logging.basicConfig(level=logging.DEBUG,  
-                    format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',  
-                    datefmt='%a, %d %b %Y %H:%M:%S',  
-                    filename='/tmp/test.log',  
-                    filemode='w')  
-  
-logging.debug('debug message')  
-logging.info('info message')  
-logging.warning('warning message')  
-logging.error('error message')  
+from logging import handlers
+import time
+import logging
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                    datefmt='%a, %d %b %Y %H:%M:%S',
+                    filename='/tmp/test.log',
+                    filemode='w')
+
+logging.debug('debug message')
+logging.info('info message')
+logging.warning('warning message')
+logging.error('error message')
 logging.critical('critical message')
+
+# 输出内容是有等级的 : 默认处理warning级别以上的所有信息
+# logging.debug('debug message')          # 调试
+# logging.info('info message')            # 信息
+# logging.warning('warning message')      # 警告
+# logging.error('error message')          # 错误
+# logging.critical('critical message')    # 批判性的
 
 
 """
@@ -62,23 +71,85 @@ format参数中可能用到的格式化串：
 """
 
 
-
 logger = logging.getLogger()
 # 创建一个handler，用于写入日志文件
-fh = logging.FileHandler('test.log',encoding='utf-8') 
+fh = logging.FileHandler('test.log', encoding='utf-8')
 
-# 再创建一个handler，用于输出到控制台 
-ch = logging.StreamHandler() 
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# 再创建一个handler，用于输出到控制台
+ch = logging.StreamHandler()
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 fh.setLevel(logging.DEBUG)
 
-fh.setFormatter(formatter) 
-ch.setFormatter(formatter) 
-logger.addHandler(fh) #logger对象可以添加多个fh和ch对象 
-logger.addHandler(ch) 
+fh.setFormatter(formatter)
+ch.setFormatter(formatter)
+logger.addHandler(fh)  # logger对象可以添加多个fh和ch对象
+logger.addHandler(ch)
 
-logger.debug('logger debug message') 
-logger.info('logger info message') 
-logger.warning('logger warning message') 
-logger.error('logger error message') 
+logger.debug('logger debug message')
+logger.info('logger info message')
+logger.warning('logger warning message')
+logger.error('logger error message')
 logger.critical('logger critical message')
+
+
+# 无论你希望日志里打印哪些内容,都得你自己写,没有自动生成日志这种事儿
+# 输出到屏幕
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s[line :%(lineno)d]-%(module)s:  %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S %p',
+)
+logging.warning('warning message test2')
+logging.error('error message test2')
+logging.critical('critical message test2')
+
+
+# 输出到文件,并且设置信息的等级
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s[line :%(lineno)d]-%(module)s:  %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S %p',
+    filename='tmp.log',
+    level=logging.DEBUG
+
+)
+logging.debug('debug 信息错误 test2')
+logging.info('warning 信息错误 test2')
+logging.warning('warning message test2')
+logging.error('error message test2')
+logging.critical('critical message test2')
+
+
+# 同时向文件和屏幕上输出 和 乱码
+fh = logging.FileHandler('tmp.log', encoding='utf-8')
+# fh2 = logging.FileHandler('tmp2.log',encoding='utf-8')
+sh = logging.StreamHandler()
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s[line :%(lineno)d]-%(module)s:  %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S %p',
+    level=logging.DEBUG,
+    # handlers=[fh,sh,fh2]
+    handlers=[fh, sh]
+)
+logging.debug('debug 信息错误 test2')
+logging.info('warning 信息错误 test2')
+logging.warning('warning message test2')
+logging.error('error message test2')
+logging.critical('critical message test2')
+
+
+# 做日志的切分
+sh = logging.StreamHandler()
+rh = handlers.RotatingFileHandler(
+    'myapp.log', maxBytes=1024, backupCount=5)   # 按照大小做切割
+fh = handlers.TimedRotatingFileHandler(
+    filename='x2.log', when='s', interval=5, encoding='utf-8')
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s[line :%(lineno)d]-%(module)s:  %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S %p',
+    level=logging.DEBUG,
+    # handlers=[fh,sh,fh2]
+    handlers=[fh, rh, sh]
+)
+for i in range(1, 100000):
+    time.sleep(1)
+    logging.error('KeyboardInterrupt error %s' % str(i))
