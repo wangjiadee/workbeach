@@ -2,7 +2,7 @@
 @Author: Ralph
 @Type_file: Python
 @Date: 2020-07-25 11:50:37
-@LastEditTime: 2020-07-25 13:07:21
+@LastEditTime: 2020-07-25 13:36:37
 @FilePath: \workbeach\Regular\re_module.py
 @Effect: RE模块
 '''
@@ -11,7 +11,10 @@ re 模块
 #findall
     会优先显示分组内的内容
     取消优先显示（？：正则）
+findall(正则,待匹配字符串,flag) :  返回所有匹配项的列表
+
 #search
+返回一个变量,通过group取到的是第一个匹配的项
     只能返回第一个符合条件的项
     得到的结构需要.group取值
     默认获取完整的匹配结果
@@ -29,6 +32,7 @@ re 模块
 # 用户体验
 """
 
+# split 通过正则表达式匹配的内容进行分割
 import re
 ret = re.split('\d+', 'wjd520xj')
 print(ret)  # ['wjd', 'xj']
@@ -39,8 +43,9 @@ print(ret1)  # ['wangjiadee', '2', 'ralph']
 # sub  替换方法
 ret2 = re.sub('\d+', 'mdzz', 'wangjaide2wddd')
 print(ret2)
-# subn  返还替换的次数
 
+# subn  返还替换的次数
+# subn 替换,在sub的基础上,返回一个元组,第一个内容是替换结果,第二个是替换次数
 ret3 = re.subn('\d+', "sb", "world2world2oppo")
 print(ret3)
 
@@ -61,7 +66,7 @@ print(ret6)
 
 
 # finditer -- 节省空间
-
+# finditer :返回一个迭代器,通过迭代取到的是一个变量,通过group取值
 ret8 = re.finditer('\d+', 'ralph18898')
 for i in ret8:
     print(i.group())
@@ -82,7 +87,8 @@ for r in res:
 # ?P<name1>
 # (?P<名字>正则表达式)
 # ret.group('名字')
-
+# 分组命名 取消分组优先
+# (?P<组名>正则)  (?P=组名)  (?:正则)
 
 res = re.search('\d\d\d(?P<name1>\w+?)\d(\w)\d\d\d(?P<name2>\w+?)\d(\w)',
                 '123abc45678agsf_123abc45678agsf123abc45678agsf')
