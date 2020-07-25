@@ -2,7 +2,7 @@
 @Author: Ralph
 @Type_file: Python
 @Date: 2020-07-25 17:27:49
-@LastEditTime: 2020-07-25 17:51:23
+@LastEditTime: 2020-07-25 17:54:21
 @FilePath: \workbeach\Object\Object_class.py
 @Effect: 面向对象的类
 '''
@@ -15,13 +15,18 @@
 
 class Person:
     def __init__(self, name, sex, job, hp, weapon, ad):
-        self.name = name
+        self.name = name  # 对象的属性/实例变量
         self.sex = sex
         self.job = job
         self.level = 0
         self.hp = hp
         self.weapon = weapon
         self.ad = ad
+
+    def 搓(self, dog):    # 方法,又有一个必须传的参数-->self对象
+        dog.hp -= self.ad
+        print('%s给%s搓了澡,%s掉了%s点血,%s当前血量%s' % (self.name, dog.dog_name,
+                                              dog.dog_name, self.ad, dog.dog_name, dog.hp))
 
 
 class Dog():
@@ -30,6 +35,18 @@ class Dog():
         self.hp = blood
         self.ad = aggr
         self.kind = kind
+
+    def 舔(self, person):
+
+        # 狗舔了人,人调血,人掉的血量,应该是狗的攻击力
+        if person.hp >= self.ad:
+            person.hp -= self.ad
+        else:
+            person.hp = 0
+        print(self.__dict__)
+        print(person.__dict__)
+        print('%s舔了%s,%s掉了%s点血,%s当前血量%s' % (self.dog_name, person.name,
+                                            person.name, self.ad, person.name, person.hp))
 
 
 小白 = Dog('小白', 5000, 249, '柴犬')
