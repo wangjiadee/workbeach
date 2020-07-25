@@ -1,3 +1,11 @@
+'''
+@Author: Ralph
+@Type_file: Python
+@Date: 2020-07-23 12:52:11
+@LastEditTime: 2020-07-25 13:13:09
+@FilePath: \workbeach\Regular\re_srapy_eg.py
+@Effect: re爬虫模块案例 // 豆瓣反爬 失效
+'''
 import requests
 
 import re
