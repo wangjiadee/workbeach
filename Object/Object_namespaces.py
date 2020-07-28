@@ -2,7 +2,7 @@
 @Author: Ralph
 @Type_file: Python
 @Date: 2020-07-28 10:30:54
-@LastEditTime: 2020-07-28 14:28:12
+@LastEditTime: 2020-07-28 17:50:32
 @FilePath: \workbeach\Object\Object_namespaces.py
 @Effect: python 面向对象的命名空间
 '''
@@ -107,3 +107,82 @@ e1 = E()
 print(e1.count)
 e2 = E()
 print(e2.count)
+
+
+class F:
+    Country = '中国'     # 静态变量/静态属性 存储在类的命名空间里的
+
+    def __init__(self, name, age, country):  # 绑定方法 存储在类的命名空间里的
+        self.name = name
+        self.age = age
+
+    def func1(self):
+        print(self)
+
+
+a = F('alex', 83, '印度')
+b = F('wusir', 74, '阿富汗')
+print(a.Country)  # 中国
+F.Country = '伊拉克'
+a.Country = '日本'
+print(a.Country)  # 日本
+print(b.Country)  # 伊拉克  *不是阿富汗 因为b 调用的也是F类里面的
+print(F.Country)  # 伊拉克
+
+
+class G:
+    Country = ['中国']     # 静态变量/静态属性 存储在类的命名空间里的
+
+    def __init__(self, name, age, country):  # 绑定方法 存储在类的命名空间里的
+        self.name = name
+        self.age = age
+
+    def func1(self):
+        print(self)
+
+
+a = G('alex', 83, '印度')
+b = G('wusir', 74, '泰国')
+print(b.Country)  # 中国
+a.Country[0] = '日本'
+print(a.Country)  # ['日本']
+print(b.Country)  # 日本
+print(G.Country)  # 日本
+
+
+class H:
+    Country = '中国'     # 静态变量/静态属性 存储在类的命名空间里的
+
+    def __init__(self, name, age, country):  # 绑定方法 存储在类的命名空间里的
+        self.name = name
+        self.age = age
+        self.Country = country
+
+    def func1(self):
+        print(self)
+
+
+a = H('alex', 83, '印度')
+b = H('wusir', 74, '泰国')
+H.Country = '英国'
+a.Country = '日本'
+print(a.Country)  # 日本
+print(b.Country)  # 泰国
+print(H.Country)  # 英国
+
+
+class I:
+    Country = '中国'     # 静态变量/静态属性 存储在类的命名空间里的
+
+    def __init__(self, name, age, country):  # 绑定方法 存储在类的命名空间里的
+        self.name = name
+        self.age = age
+
+    def Country(self):
+        return self.Country
+
+
+a = I('alex', 83, '印度')
+b = I('wusir', 74, '泰国')
+print(a.Country)
+print(a.Country())
