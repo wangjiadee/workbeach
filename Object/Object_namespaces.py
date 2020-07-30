@@ -2,12 +2,23 @@
 @Author: Ralph
 @Type_file: Python
 @Date: 2020-07-28 10:30:54
-@LastEditTime: 2020-07-28 17:50:32
+@LastEditTime: 2020-07-30 10:54:22
 @FilePath: \workbeach\Object\Object_namespaces.py
 @Effect: python 面向对象的命名空间
 '''
+"""
+# 命名空间
+    # 在类的命名空间里 : 静态变量 绑定方法
+    # 在对象的命名空间里 : 类指针 对象的属性(实例变量)
 
+    # 调用的习惯
+        # 类名.静态变量
+        # 对象.静态变量 (对象调用静态变量的时候,不能对变量进行赋值操作 对象.静态变量 = 1UI27)
 
+        # 绑定方法
+        # 对象.绑定方法() # ==> 类名.绑定方法(对象)
+
+"""
 class A:
     # 静态变量/静态属性 存储在类命名空间里面
     Compass = 'oppo'
