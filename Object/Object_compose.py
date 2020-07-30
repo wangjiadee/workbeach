@@ -2,7 +2,7 @@
 @Author: Ralph
 @Type_file: Python
 @Date: 2020-07-28 14:34:03
-@LastEditTime: 2020-07-30 11:05:50
+@LastEditTime: 2020-07-30 11:06:02
 @FilePath: \workbeach\Object\Object_compose.py
 @Effect: 面向对象的组成
 '''
