@@ -2,7 +2,7 @@
 @Author: Ralph
 @Type_file: Python
 @Date: 2020-07-28 14:34:03
-@LastEditTime: 2020-07-28 15:30:18
+@LastEditTime: 2020-07-30 11:05:50
 @FilePath: \workbeach\Object\Object_compose.py
 @Effect: 面向对象的组成
 '''
@@ -60,3 +60,34 @@ print(test4.course.price)
 print(name1.cla, test)
 print(test.begintime)
 print(name2.cla.begintime)
+
+
+
+
+from math import pi
+class Circle:
+    def __init__(self,r):
+        self.r = r
+    
+    def area(self):
+        return pi * self.r**2
+    
+    def perimeter(self):
+        return pi *2*self.r
+    
+
+
+class Ring:
+    def __init__(self,o_r,i_r):
+        #对参数大小进行排序
+        o_r,i_r = (o_r,i_r) if o_r > i_r else (i_r,o_r)
+        #内部实例化
+        self.o_r = Circle(o_r)     
+        self.i_r = Circle(i_r)
+    def area(self):
+        return self.o_r.area() - self.i_r.area()
+    def perimeter(self):
+        return self.o_r.perimeter() + self.i_r.perimeter()
+
+r= Ring(10,8)
+# print(r)
