@@ -1,7 +1,7 @@
 '''
 @Author: Ralph
 @Date: 2020-07-31 17:38:49
-@LastEditTime: 2020-07-31 17:42:09
+@LastEditTime: 2020-07-31 20:15:02
 @LastEditors: Please set LastEditors
 @Description: 面向对象和队列堆栈.pickle 
 @FilePath: \python\workbeach\Object\Object_alg_pickle.py
@@ -22,47 +22,62 @@
 """
 
 
+
+
 import pickle
 class Que_Sta(object):
     def __init__(self):
         self.list = []
-    def get(self,item):
+
+    def get(self, item):
         self.list.append(item)
+
     def put(self):
-        if self.inedx  == -1:
-            print(self.list.pop())
+        if self.inedx == 0:
+            return self.list.pop()
         else:
-            print(self.list.pop(0))
+            return self.list.pop(0)
+
+
 class Queue(Que_Sta):
-    def __init__(self):
-        self.index = -1
-        Que_Sta.__init__(self)
-class Stack(Que_Sta):
     def __init__(self):
         self.index = 0
         Que_Sta.__init__(self)
 
+
+class Stack(Que_Sta):
+    def __init__(self):
+        self.index = 1
+        Que_Sta.__init__(self)
+
+# 在工作中如果老是读写入数据 可以写到类里面
+
+
 class Pickle(object):
-    def __init__(self,file_path):
+    def __init__(self, file_path):
         self.file_path = file_path
-    def Dump(self,obj):
-        with open(self.file_path,mode="wb") as f:
-            pickle.dump(obj,f)
+
+    def Dump(self, obj):
+        with open(self.file_path, mode="wb") as f:
+            pickle.dump(obj, f)
+
     def Load(self):
-        with open(self.file_path,mode= "rb") as f1:
+        with open(self.file_path, mode="rb") as f1:
             while True:
                 try:
                     yield pickle.load(f1)
                 except EOFError:
                     break
-        
-        
+
+
 ret = Stack()
 ret.get(1)
 ret.get(2)
 ret.get(3)
 file1 = Pickle('pickle_file')
-file1.Dump(ret)
+file1.Dump(ret)  # 一条代码既可全部放入
+# 只能读取一个值
 print(file1.Load())
+# 可以循环读取出值
 for i in file1.Load():
-    print(i,i.list)
+    print(i, i.list)
