@@ -1,10 +1,10 @@
 '''
 @Author: Ralph
 @Date: 2020-07-31 17:38:49
-@LastEditTime: 2020-07-31 20:15:02
+@LastEditTime: 2020-08-03 13:56:23
 @LastEditors: Please set LastEditors
 @Description: 面向对象和队列堆栈.pickle 
-@FilePath: \python\workbeach\Object\Object_alg_pickle.py
+@FilePath: \workbeach\Object\Object_alg_pickle.py
 '''
 
 
@@ -20,6 +20,9 @@
     Queue 队列 （先进先出） FIFO
     stack 栈 （先进后出）LIFO
 """
+
+
+#################能默写#####################
 
 
 
@@ -41,13 +44,13 @@ class Que_Sta(object):
 
 class Queue(Que_Sta):
     def __init__(self):
-        self.index = 0
+        self.index = 1
         Que_Sta.__init__(self)
 
 
 class Stack(Que_Sta):
     def __init__(self):
-        self.index = 1
+        self.index = 0
         Que_Sta.__init__(self)
 
 # 在工作中如果老是读写入数据 可以写到类里面
