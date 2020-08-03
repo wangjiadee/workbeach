@@ -1,7 +1,7 @@
 '''
 @Author: Ralph
 @Date: 2020-07-31 17:38:49
-@LastEditTime: 2020-08-03 13:56:23
+@LastEditTime: 2020-08-03 16:51:56
 @LastEditors: Please set LastEditors
 @Description: 面向对象和队列堆栈.pickle 
 @FilePath: \workbeach\Object\Object_alg_pickle.py
@@ -36,6 +36,7 @@ class Que_Sta(object):
         self.list.append(item)
 
     def put(self):
+        # 通过一个参数来判断是列队还是栈
         if self.inedx == 0:
             return self.list.pop()
         else:
@@ -45,12 +46,14 @@ class Que_Sta(object):
 class Queue(Que_Sta):
     def __init__(self):
         self.index = 1
+        # 调用父类完成初始化的列表
         Que_Sta.__init__(self)
 
 
 class Stack(Que_Sta):
     def __init__(self):
         self.index = 0
+        # 调用父类完成初始化的列表
         Que_Sta.__init__(self)
 
 # 在工作中如果老是读写入数据 可以写到类里面
