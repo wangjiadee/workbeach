@@ -40,7 +40,11 @@ os.name  # 输出字符串指示当前使用平台。win->'nt'; Linux->'posix'
 # 和执行系统命令相关
 os.system("bash command")  # 运行shell命令，直接显示
 os.popen("bash command).read()  # 运行shell命令，获取执行结果
+         
 os.environ  # 获取系统环境变量
+Test = os.environ.get("NUMBER_OF_PROCESSORS")
+print(Test)
+
 
 # path系列，和路径相关
 os.path.abspath(path)  # 返回path规范化的绝对路径
