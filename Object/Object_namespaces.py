@@ -2,7 +2,7 @@
 @Author: Ralph
 @Type_file: Python
 @Date: 2020-07-28 10:30:54
-@LastEditTime: 2020-07-30 10:54:22
+LastEditTime: 2020-08-07 14:08:59
 @FilePath: \workbeach\Object\Object_namespaces.py
 @Effect: python 面向对象的命名空间
 '''
@@ -197,3 +197,14 @@ a = I('alex', 83, '印度')
 b = I('wusir', 74, '泰国')
 print(a.Country)
 print(a.Country())
+
+
+class Foo(object):
+    n1 = 'zzz'
+    def __init__(self,name):
+        self.n2 = name
+obj = Foo('bbb')
+print(obj.n1)   #zzz
+print(obj.n2)   #bbb
+print(Foo.n1)   #zzz
+print(Foo.n2)   #报错
