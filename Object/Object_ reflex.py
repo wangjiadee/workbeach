@@ -1,7 +1,7 @@
 '''
 Author: Ralph
 Date: 2020-08-11 17:56:08
-LastEditTime: 2020-08-11 18:06:47
+LastEditTime: 2020-08-13 17:28:12
 LastEditors: Please set LastEditors
 Description: python 的反射
 FilePath: \workbeach\Object\Object_ reflex.py
@@ -76,3 +76,25 @@ print(getattr(a,'ralph')())
 
 
 
+import sys
+import shutil
+# sys.argv 获取命令和变量
+ins_box =sys.argv
+class Operate_file:
+    def __init__(self,ins_box):
+        self.path1 = ins_box[0]
+        if len(ins_box) == 2:
+            self.path2 = ins_box[1]
+    def cp(self):
+        print('copy')
+        # shutil.copy2(self.path1, self.path2)
+    def rm(self):
+        print('remove')
+        # shutil.rmtree(self.path)
+    def mv(self):
+        print('move')
+        # shutil.move(self.path1, self.path2))
+file_obj = Operate_file(ins_box[2:])
+if hasattr(file_obj,ins_box[1]):
+    if callable(getattr(file_obj, ins_box[1])):
+        getattr(file_obj, ins_box[1])()
