@@ -30,3 +30,14 @@ class VIPUser(User):
 Tom = VIPUser('tom','VIP18','2020-02-02','2022-02-02')
 print(Tom.__dict__)
         
+#OSI 模型默写
+
+"""
+#OSI 5层协议
+
+5   应用层       代码（python go）
+4   传输层       port端口
+3   网络层       ipv4 ipv6 路由器  三层交换机
+2   数据链路层    mac arp协议 网卡 二层交换机
+1   物理层    
+"""
